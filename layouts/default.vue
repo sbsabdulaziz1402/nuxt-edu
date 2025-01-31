@@ -6,7 +6,7 @@
                 </div>
                 <div class="w-[85%]" :class="{'w-[95%]': !isSidebarOpen}">
                     <Topbar :is-sidebar-open="isSidebarOpen" @toggle-sidebar="toggleSidebar" />
-                    <main>
+                    <main style="background: #f4f4f4; height: 100%;">
                         <slot/>
                     </main>
                 </div>
@@ -32,7 +32,6 @@ function toggleSidebar() {
     transition: all 0.5s;
 }
 .close {
-    /* background: #fff; */
     width: 5%;
     transition: all 0.5s;
 }

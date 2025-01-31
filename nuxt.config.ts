@@ -33,10 +33,7 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
-  plugins: [
-    '~/plugins/firebase.js',
-  ],
-  ssr: false,
+  plugins: ["~/plugins/firebase.js"],
   pinia: {
     storesDirs: ['./stores/**', './custom-folder/stores/**'],
   }
