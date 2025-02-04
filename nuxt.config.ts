@@ -15,27 +15,22 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
+
   modules: [
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxt/icon',
     '@pinia/nuxt',
-    "shadcn-nuxt",
+    '@nuxt/ui'
   ],
-  shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
-    prefix: "",
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
-    componentDir: "./components/ui",
-  },
+  // ui: { ssr: false },
   plugins: ["~/plugins/firebase.js"],
+  // ssr: false,
   pinia: {
     storesDirs: ['./stores/**', './custom-folder/stores/**'],
-  }
-
+  },
 })

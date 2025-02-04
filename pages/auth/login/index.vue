@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useAuthService } from "@/entities/user/services/authService";
 import { useUserStore } from "@/entities/user/model/store";
-
+import { navigateTo } from "nuxt/app";
 definePageMeta({
     layout: false
 })
@@ -17,6 +17,7 @@ const userStore = useUserStore();
 const handleLogIn = async () => {
   try {
     await login(email.value, password.value);
+    navigateTo('/catalog')
     console.log("User logged in:", userStore.getUser());
     errorMessage.value = ""; // Clear error if login is successful
   } catch (error: any) {
@@ -30,7 +31,7 @@ const handleLogIn = async () => {
   <div class="login-wrapper">
     <div class="max-w-sm mx-auto mt-8 p-4 border rounded shadow">
       <h2 class="text-lg font-bold mb-4">Log In</h2>
-      <form @submit.prevent="handleLogIn">
+      <form>
         <div class="mb-4">
           <label for="email" class="block mb-1 font-medium">Email</label>
           <input

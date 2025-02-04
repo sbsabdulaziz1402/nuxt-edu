@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from 'firebase/database';
 const firebaseConfig = {
     apiKey: "AIzaSyCOKqAbu4AITTiEwsPya8cH_P0o3HQ9xL0",
     authDomain: "fibertextile-e96f5.firebaseapp.com",
@@ -13,9 +14,11 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 const auth = getAuth(firebaseApp);
+const database = getDatabase(firebaseApp);
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.provide('firebaseApp', firebaseApp);
   nuxtApp.provide('db', db);
   nuxtApp.provide('auth', auth);
+  nuxtApp.provide('realbase', database);
 });

@@ -3,9 +3,9 @@
     <div class="flex justify-between items-center top-bar-body">
         <div class="flex justify-between items-center top-bar-left">
             <div class="flex items-center aside-button">
-                <Button @click="$emit('toggle-sidebar')">
+                <UButton @click="$emit('toggle-sidebar')">
                     <Icon name="hugeicons:list-view" size="18px" />
-                </Button>
+                </UButton>
             </div>
         </div>
     </div>

@@ -16,17 +16,17 @@ import { ref, onMounted } from "vue";
 import { collection, getDocs } from "firebase/firestore";
 
 
-const { $db } = useNuxtApp();
+// const { $db } = useNuxtApp();
 const products = ref();
 
-onMounted(async () => {
-  try {
-    const querySnapshot = await getDocs(collection($db, "products"));
-    products.value = querySnapshot.docs.map(doc => (doc.data()));
-  } catch (error) {
-    console.error("Failed to fetch products:", error);
-  }
-});
+// onMounted(async () => {
+//   try {
+//     const querySnapshot = await getDocs(collection($db, "products"));
+//     products.value = querySnapshot.docs.map(doc => (doc.data()));
+//   } catch (error) {
+//     console.error("Failed to fetch products:", error);
+//   }
+// });
 </script>
 
 <style scoped>

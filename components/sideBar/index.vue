@@ -42,7 +42,12 @@ const menuList : Array<topBarMenu> = [{
     icon: 'material-symbols:view-compact-alt-outline',
     title: 'Catalog',
     link: '/catalog',
-    num: 1
+    num: 2
+},{
+    icon: 'mdi:chat-processing-outline',
+    title: 'Chat',
+    link: '/communication',
+    num: 3
 }
 ]
 </script>
