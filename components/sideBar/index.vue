@@ -48,8 +48,7 @@ const menuList : Array<topBarMenu> = [{
     title: 'Chat',
     link: '/communication',
     num: 3
-}
-]
+}]
 </script>
 
 <style scoped>
@@ -72,12 +71,12 @@ const menuList : Array<topBarMenu> = [{
 
 
 .sidebar-menu-item:hover .item-logo {
-    color: #6D35E3;
+    color: var(--plcolor-accent);
 }
 
 
 .sidebar-title {
-    color: #6D35E3;
+    color: var(--plcolor-accent);
     font-weight: bold;
     font-size: 25px;
 }

@@ -1,12 +1,12 @@
 <template>
-        <div class="h-[100vh] w-full">
+        <div class="w-full">
             <div class="flex h-full">
                 <div class="sidebar-wrapper bg-white px-4 py-[16px] h-full w-[15%]" :class="{close: !isSidebarOpen}">
                     <SideBar :is-sidebar-open="isSidebarOpen"/>
                 </div>
-                <div class="w-[85%]" :class="{'w-[95%]': !isSidebarOpen}">
+                <div class="w-full h-[100vh] relative bg-[#f4f4f4;]" :class="{'w-[95%]': !isSidebarOpen}">
                     <Topbar :is-sidebar-open="isSidebarOpen" @toggle-sidebar="toggleSidebar" />
-                    <main style="background: #f4f4f4; height: 100%;">
+                    <main>
                         <slot/>
                     </main>
                 </div>

@@ -1,6 +1,7 @@
 import { ref, set, get, push } from 'firebase/database';
 import { onValue } from 'firebase/database';
 import { ref as VueRef } from 'vue';
+
 export const useChat = () => {
     const { $realbase } = useNuxtApp(); 
     const messages = VueRef([]);
@@ -11,7 +12,7 @@ export const useChat = () => {
     const createChatRoom = async (user1: string, user2: string) => {
         const chatRoomId = getChatRoomId(user1, user2);
         const chatRoomRef = ref($realbase, `chat_rooms/${chatRoomId}`);
-        
+
         const snapshot = await get(chatRoomRef);
         if (!snapshot.exists()) {
             await set(chatRoomRef, {
@@ -23,8 +24,10 @@ export const useChat = () => {
         return chatRoomId;
     }
 
+
+
     const sendMessage = async (sender: string, getter: string, message: string) => {
-        const chatRoomId = getChatRoomId(sender, getter);
+        const chatRoomId = await getChatRoomId(sender, getter);
         const messagesRef = ref($realbase, `chat_rooms/${chatRoomId}/messages`);
         
         const newMessageRef = push(messagesRef);
@@ -39,14 +42,15 @@ export const useChat = () => {
     const listenForMessages = (user1: string, user2: string) => {
         const chatRoomId = getChatRoomId(user1, user2);
         const messagesRef = ref($realbase, `chat_rooms/${chatRoomId}/messages`);
-    
+        // const messageStore = useMessagesStore();
         onValue(messagesRef, (snapshot) => {
             if (snapshot.exists()) {
               messages.value = Object.values(snapshot.val());
+            //   messageStore.messages = messages
             } else {
               messages.value = [];
             }
         });
     }
-    return { createChatRoom, getChatRoomId };
+    return { createChatRoom, getChatRoomId, sendMessage, listenForMessages };
 }

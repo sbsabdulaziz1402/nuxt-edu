@@ -7,12 +7,10 @@ export default defineNuxtRouteMiddleware( ( to, from ) => {
     const excludedRoutes = ['/auth', '/auth/sign-up', '/auth/login'];
 
     if(excludedRoutes.includes(to.path)) {
-        console.log('auth')
         return;
     }
 
     const auth = getAuth();
-
     return new Promise( ( resolve ) => {
         onAuthStateChanged(auth, (user)=> {
             if(user) {

@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { useUserStore } from "@/entities/user/model/store";
+import { useUserStore } from "../model/store";
 
 export const useAuthService = () => {
   const { $auth } = useNuxtApp();
@@ -23,7 +23,6 @@ export const useAuthService = () => {
 
   const login = async (email: string, password: string) => {
     const userCredential = await signInWithEmailAndPassword($auth, email, password);
-
     userStore.setUser({
       id: userCredential.user.uid,
       email: userCredential.user.email || "",

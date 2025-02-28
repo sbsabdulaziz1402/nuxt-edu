@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAuthService } from "@/entities/user/services/authService";
-import { useUserStore } from "@/entities/user/model/store";
+import { useUserStore } from "~/entities/user/model/store";
 
 const email = ref("");
 const password = ref("");

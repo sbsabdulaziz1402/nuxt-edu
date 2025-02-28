@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAuthService } from "@/entities/user/services/authService";
-import { useUserStore } from "@/entities/user/model/store";
+import { useUserStore } from "~/entities/user/model/store";
 import { navigateTo } from "nuxt/app";
 definePageMeta({
     layout: false
@@ -31,7 +31,7 @@ const handleLogIn = async () => {
   <div class="login-wrapper">
     <div class="max-w-sm mx-auto mt-8 p-4 border rounded shadow">
       <h2 class="text-lg font-bold mb-4">Log In</h2>
-      <form>
+      <div>
         <div class="mb-4">
           <label for="email" class="block mb-1 font-medium">Email</label>
           <input
@@ -56,11 +56,12 @@ const handleLogIn = async () => {
         </div>
         <p v-if="errorMessage" class="text-red-500 text-sm mb-4">{{ errorMessage }}</p>
         <button
-          type="submit"
+          @click="handleLogIn"
+
           class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
           Log In
         </button>
-      </form>
+      </div>
     </div>
   </div>
 </template>

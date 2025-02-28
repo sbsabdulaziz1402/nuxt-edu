@@ -25,13 +25,13 @@ const props = defineProps({
     z-index: 1000;
 }
 .top-bar-left button {
-    background-color: #6D35E3;
+    background-color: var(--plcolor-accent);
     cursor: pointer;
     transition: all 0.5s;
 }
 .top-bar-left button:hover {
-    border: 1px solid #6D35E3;
+    border: 1px solid var(--plcolor-accent);
     background-color: #ffffff;
-    color: #6D35E3;
+    color: var(--plcolor-accent);
 }
 </style>
