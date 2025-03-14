@@ -28,11 +28,16 @@
               </div>
             </template>
 
-            <UTabs :items="groupList.value" orientation="vertical" class=" justify-start">
-              <template #default="{ item, index }">
-                <div @click="setGroupList(item)" class=" text-left">{{ index + 1 }}. {{ item.name }}</div>
-              </template>
-            </UTabs>
+            <div class="group-list-container">
+              <ul class="group-list-body">
+                <li class="group-list-item" v-for="(item, index) in groupList.value" 
+                :key="index"  
+                @click="setGroupList(item), filterActiveGroup(index)"
+                :class="{active: item.isActive}">
+                  {{ index + 1 }}. {{ item.name }}
+                </li>
+              </ul>
+            </div>
           </UCard>
         </div>
       </div>
@@ -69,6 +74,14 @@ const setGroupList = (val)=> {
   setSelectedChat({type:'GROUP', ...val})
 }
 
+const filterActiveGroup = (val) => {
+  groupList.value.forEach(el=>{
+    el.isActive = false;
+  })
+  groupList.value[val].isActive = true;
+  console.log(groupList.value[val], 'asdasd')
+}
+
 function toggleCreateGroup() {
   isOpen.value = !isOpen.value
 }
@@ -84,7 +97,6 @@ function toggleCreateGroup() {
 .chat-container {
   display: flex;
   height: 100%;
-  /* background-color: #EFF6FC; */
   padding: 1rem;
   gap: 1rem;
 }
@@ -130,5 +142,32 @@ function toggleCreateGroup() {
   display: flex;
   flex-direction: column;
   gap: 34px;
+}
+
+
+.group-list-container{
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.group-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.group-list-item {
+  cursor: pointer;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+}
+
+.group-list-item:hover { 
+  background: #E3F0EF;
+}
+
+.group-list-item.active { 
+  background: #E3F0EF;
 }
 </style>

@@ -1,6 +1,7 @@
 import { ref, set, get, push } from 'firebase/database';
 import { onValue } from 'firebase/database';
 import { ref as VueRef } from 'vue';
+import { any } from 'zod';
 import { useUserStore } from '~/entities/user/model/store';
 
 export const useChatGroup = () => {
@@ -25,11 +26,9 @@ export const useChatGroup = () => {
         onValue(groupref, (snapshot) => {
             if(snapshot.exists()) {
                 chatStore.groupList.value = Object.values(snapshot.val());
-
-                chatStore.setSelectedChat( {type:'GROUP', ...Object.values(snapshot.val())[0]})
+                // chatStore.setSelectedChat({type:'GROUP', ...Object.values(snapshot.val())[0]});
             } else {
                 chatStore.groupList.value = []
-
             }
         })
     }
@@ -49,7 +48,6 @@ export const useChatGroup = () => {
     }
 
     const listenForGroupMessages = (groupName: string) => {
-        console.log('listen for message')
         const messagesRef = ref($realbase, `groups/${groupName}/messages`);
         onValue(messagesRef, (snapshot) => {
             if (snapshot.exists()) {

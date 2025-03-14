@@ -20,19 +20,21 @@
             </div>
           </div>
 
-          <div>
-            <UForm :state="state" class="space-y-4" @submit="onSubmitMessage">
-                <UFormGroup  name="message">
-                    <UInput icon="solar:paperclip-linear" 
-                            v-model="state.message"
-                            placeholder="Type your message here..." 
-                            type="text"/>
-                </UFormGroup>
-            </UForm>
-          </div>
+            <div>
+                <UForm :state="state" class="space-y-4" @submit="onSubmitMessage">
+                    <UFormGroup name="message">
+                        <UInput icon="solar:paperclip-linear" 
+                                v-model="state.message"
+                                placeholder="Type your message here..." 
+                                type="text"/>
+                    </UFormGroup>
+                </UForm>
+            </div>
         </UCard>
     </div>
 </template>
+
+
 
 <script setup lang="ts">
 import { watch } from 'vue';
@@ -50,7 +52,6 @@ const state = reactive({
 watch(
     ()=>messages.value,
     (newVal, oldVal)=>{
-        console.log('watch', newVal)
         var block = document.getElementById("chat-messages");
         block.scrollTop = block.scrollHeight;
     },
@@ -62,13 +63,9 @@ const onSubmitMessage = (val: any)=> {
     state.message = undefined
 }
 
-onMounted(async ()=> {
-    // messagesList.value = chatStore.messages.value
-})
-
-
-
-
+// onMounted(async ()=> {
+//     // messagesList.value = chatStore.messages.value
+// })
 </script>
 
 
@@ -102,7 +99,9 @@ onMounted(async ()=> {
     overflow: auto;
     width: 100%;
     display: flex;
+    /* justify-content: flex-end; */
     height: 600px;
+    /* height: 100%; */
     /* justify-content: flex-end; */
     gap: 30px;
     margin: 20px 0px;
@@ -120,7 +119,7 @@ onMounted(async ()=> {
   scroll-behavior: smooth;
 } 
 
- .chat-messages-body > :last-child {
+ /* .chat-messages-body > :last-child {
   margin-top: auto;
-}
+} */
 </style>

@@ -7,7 +7,7 @@ export const useChatStore = defineStore('chatStore',()=>{
     const { listenForGroupMessages } = useChatGroup();
     const selectedChat = ref<any>(null)
     const messages = ref([]);
-    const groupList = ref([])
+    const groupList = ref([]);
 
     const runListenChat = (newChat:any) => {
         if(newChat) {
@@ -23,6 +23,5 @@ export const useChatStore = defineStore('chatStore',()=>{
         selectedChat.value = chat;
         runListenChat(chat);
     }
-
     return {setSelectedChat, groupList, messages, selectedChat}
 })
